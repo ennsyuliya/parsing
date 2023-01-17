@@ -32,17 +32,17 @@ class LeroyImagesPipeline(ImagesPipeline):
             print(f'{item["_id"]} has no images')
 
     def file_path(self, request, response=None, info=None):
-
         pattern = re.compile('\/(\d+)')
         product_id = re.findall(pattern, request.url)[0]
         dir_path = f'{os.getcwd()}\\images\\{product_id}\\'
-        if os.path.exists(dir_path) == False:
-            os.mkdir(dir_path)
-        
         file_name = os.path.basename(request.url)
-        
         file_path = f'{dir_path}{file_name}'
         return file_path
+
+
+
+
+
 
     def item_completed(self, results, item, info):
         
